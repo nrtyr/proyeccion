@@ -5042,7 +5042,7 @@ INSERT INTO CP_Estado(d_codigo,d_asenta,D_mnpio) VALUES (54386,'El Puerto','Chap
 INSERT INTO CP_Estado(d_codigo,d_asenta,D_mnpio) VALUES (54386,'San Gabriel','Chapa de Mota');
 INSERT INTO CP_Estado(d_codigo,d_asenta,D_mnpio) VALUES (54387,'El Quinte','Chapa de Mota');
 INSERT INTO CP_Estado(d_codigo,d_asenta,D_mnpio) VALUES (54387,'San Felipe Coamango','Chapa de Mota');
-INSERT INTO CP_Estado(d_codigo,d_asenta,D_mnpio) VALUES (54400,'Benito Juarez 1a. Seccion (Cabecera Municipal)','Nicolas Romero');
+INSERT INTO CP_Estado(d_codigo,d_asenta,D_mnpio) VALUES (54400,'Centro, Benito Juarez 1a. Seccion (Cabecera Municipal)','Nicolas Romero');
 INSERT INTO CP_Estado(d_codigo,d_asenta,D_mnpio) VALUES (54402,'Barron','Nicolas Romero');
 INSERT INTO CP_Estado(d_codigo,d_asenta,D_mnpio) VALUES (54405,'Benito Juarez','Nicolas Romero');
 INSERT INTO CP_Estado(d_codigo,d_asenta,D_mnpio) VALUES (54407,'Aquiles Cordova Moran','Nicolas Romero');
