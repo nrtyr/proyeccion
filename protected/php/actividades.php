@@ -28,17 +28,27 @@
 			conexion = new ActiveXObject("Microsoft.XMLHTTP");
 		}
 
-		
+		conexion.onreadystatechange=function(){
+			if (conexion.readyState==4 && conexion.status==200) {
+				document.getElementById("localX").innerHTML = conexion.responseText;
+			}
+		}
+
 		conexion.open("POST","variable.php",true);
 		conexion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 		conexion.send(valor);
+
 	}
 	</script>
 <!-- 	Ajax de Auto Completado para Colonia -->
 
+
 <!-- Todas en mayusculas -->
 	<style>
-		input[type=text]{
+		input[type=text],[type=number]{
+			text-transform: uppercase;
+		}
+		textarea{
 			text-transform: uppercase;
 		}
 	</style>
@@ -75,7 +85,7 @@
 
 					    <label>Sección:</label>
 
-					    <input type="text" name="txtSecc" placeholder="Sección..." autocomplete="on" class="form-control"/>
+					    <input type="number" name="txtSecc" maxlength="4" pattern="[0-9]{4}" placeholder="Sección..." id="autoSeccion" autocomplete="on" class="form-control"/>
 					</div>
 					
 					<div class="panel panel-default">
@@ -85,8 +95,9 @@
 								<div class="form-group">
 
 								    <label>Local:</label>
-
-								    <input type="text" name="txtLocal" placeholder="Local..." id="autoLocal" autocomplete="on" class="form-control"/>
+									<div id="localX">
+								    <input type="number" name="txtLocal" maxlength="2" pattern="[0-9]{2}" placeholder="Local..."  autocomplete="on" class="form-control"/>
+								    </div>
 								</div>
 							</div>
 							
@@ -95,7 +106,7 @@
 
 								    <label>Federal:</label>
 
-								    <input type="text" name="txtFederal" placeholder="Federal..." id="autoFederal" autocomplete="on" class="form-control"/>
+								    <input type="number" name="txtFederal" maxlength="2" pattern="[0-9]{2}" placeholder="Federal..." id="autoFederal" autocomplete="on" class="form-control"/>
 								</div>
 							</div>
 						</div>
@@ -105,7 +116,7 @@
 
 					    <label>No. de Asistentes o Visitados:</label>
 
-					    <input type="text" name="txtVisitados" placeholder="No. de Asistentes o Visitados..." autocomplete="on" class="form-control"/>
+					    <input type="number" name="txtVisitados" maxlength="3" pattern="[0-9]{3}" placeholder="No. de Asistentes o Visitados..." autocomplete="on" class="form-control"/>
 					</div>
 
 					<div class="form-group">
@@ -162,6 +173,11 @@ $( "#autoMunicipio" ).autocomplete({
 $( "#autoLocColonia" ).autocomplete({
   source: "locColonia.php"
 });
+
+$( "#autoSeccion" ).autocomplete({
+  source: "seccion.php"
+});
+
 
 </script>
 <!-- Esta es la parte de Auto Completados -->
