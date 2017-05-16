@@ -77,7 +77,7 @@
 					    <label>Localidad / Colonia:</label>
 
 						
-					    	<input type="text" name="txtLocColonia" placeholder="Localidad / Colonia..." id="autoLocColonia" autocomplete="on" class="form-control"/>
+					    	<input type="text" name="txtLocColonia" placeholder="Localidad / Colonia..." id="autoLocColonia" autocomplete="on" class="form-control" required/>
 					    
 					</div>
 
@@ -85,7 +85,7 @@
 
 					    <label>Sección:</label>
 
-					    <input type="text" name="txtSecc" maxlength="4" pattern="[0-9]{4}" placeholder="Sección..." id="autoSeccion" autocomplete="on" class="form-control"/>
+					    <input type="text" name="txtSecc" size="4" maxlength="4" pattern="[0-9]{4}" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="Sección..." id="autoSeccion" autocomplete="on" class="form-control" required/>
 					</div>
 					
 					<div class="panel panel-default">
@@ -107,7 +107,7 @@
 
 								    <label>Federal:</label>
 
-								    <input type="number" name="txtFederal" size="2" maxlength="2" pattern="[0-9]{2}" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="Federal..." id="autoFederal" autocomplete="on" class="form-control"/>
+								    <input type="text" name="txtFederal" size="2" maxlength="2" pattern="[0-9]{2}" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="Federal..." id="autoFederal" autocomplete="on" class="form-control"/>
 								</div>
 							</div>
 						</div>
@@ -118,7 +118,7 @@
 
 					    <label>No. de Asistentes o Visitados:</label>
 
-					    <input type="number" name="txtVisitados" maxlength="3" pattern="[0-9]{3}" placeholder="No. de Asistentes o Visitados..." autocomplete="on" class="form-control"/>
+					    <input type="text" name="txtVisitados" size="2" maxlength="2" pattern="[0-9]{2}" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="No. de Asistentes o Visitados..." autocomplete="on" class="form-control" required/>
 					</div>
 
 					<div class="form-group">
@@ -138,14 +138,14 @@
 					    <label>Foto Uno:</label>
 
 					    <!-- <input id="archivos" name="fotoUno" type="file" multiple=true accept=".jpg"  class="file-loading"> -->
-					    <input id="archivos" name="fotoUno" type="file" multiple=true accept=".jpg"  onChange="validateAUno(this.value)" class="file-loading">
+					    <input id="archivos" name="fotoUno" type="file" multiple=true accept=".jpg"  onChange="validateAUno(this.value)" class="file-loading" required>
 					</div>
 
 					<div class="form-group">
 
 					    <label>Foto Dos:</label>
 
-					    <input id="archivos2" name="fotoDos" type="file" multiple=true accept=".jpg" onChange="validateADos(this.value)"class="file-loading">
+					    <input id="archivos2" name="fotoDos" type="file" multiple=true accept=".jpg" onChange="validateADos(this.value)" class="file-loading">
 					</div>
 
 					</div>
