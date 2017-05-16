@@ -13,10 +13,10 @@ if (isset($_SESSION['mini']) && !empty($_SESSION['mini'])) {
 
 $db = new SQLite3("../data/catMuniColCod.db");
 
-$cs = $db -> query("SELECT * FROM catSecc WHERE seccionSecc LIKE '%$_GET[term]%' AND municipioSecc LIKE '%$ok%' ;");
+$cs = $db -> query("SELECT * FROM distritosLocales WHERE Seccion LIKE '%$_GET[term]%' AND municipio LIKE '%$ok%' ;");
 	    
 while($resul = $cs->fetchArray()) {
-  $return_arr[] =  $resul['seccionSecc'];
+  $return_arr[] =  $resul['Seccion'];
 }
 echo json_encode($return_arr);
 

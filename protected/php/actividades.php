@@ -69,7 +69,7 @@
 
 					    <label>Municipio:</label>
 
-					    <input type="text" name="txtMuni" placeholder="Municipio" id="autoMunicipio" autocomplete="on" onfocusout="ejecutarAjax()" class="form-control"/>
+					    <input type="text" name="txtMuni" placeholder="Municipio" id="autoMunicipio" autocomplete="on" onfocusout="ejecutarAjax()" class="form-control" required/>
 					</div>
 
 					<div class="form-group">
@@ -85,19 +85,20 @@
 
 					    <label>Sección:</label>
 
-					    <input type="number" name="txtSecc" maxlength="4" pattern="[0-9]{4}" placeholder="Sección..." id="autoSeccion" autocomplete="on" class="form-control"/>
+					    <input type="text" name="txtSecc" maxlength="4" pattern="[0-9]{4}" placeholder="Sección..." id="autoSeccion" autocomplete="on" class="form-control"/>
 					</div>
 					
 					<div class="panel panel-default">
 						<div class="panel-heading"><b>Distrito Electoral</b></div>
+						<div id="localX">
 						<div class="panel-body">
 							<div class="col-md-6">
 								<div class="form-group">
 
 								    <label>Local:</label>
-									<div id="localX">
-								    <input type="number" name="txtLocal" maxlength="2" pattern="[0-9]{2}" placeholder="Local..."  autocomplete="on" class="form-control"/>
-								    </div>
+									
+								    <input type="text" name="txtLocal" size="2" maxlength="2" pattern="[0-9]{2}" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="Local..."  autocomplete="on" class="form-control"/>
+								    
 								</div>
 							</div>
 							
@@ -106,9 +107,10 @@
 
 								    <label>Federal:</label>
 
-								    <input type="number" name="txtFederal" maxlength="2" pattern="[0-9]{2}" placeholder="Federal..." id="autoFederal" autocomplete="on" class="form-control"/>
+								    <input type="number" name="txtFederal" size="2" maxlength="2" pattern="[0-9]{2}" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="Federal..." id="autoFederal" autocomplete="on" class="form-control"/>
 								</div>
 							</div>
+						</div>
 						</div>
 					</div>
 
