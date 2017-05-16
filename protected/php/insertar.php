@@ -1,32 +1,111 @@
 <?php 
- 
+
+error_reporting(E_ALL ^ E_DEPRECATED);
 header('Content-Type: text/html; Charset=UTF-8');
- 
+
+date_default_timezone_set('America/Mexico_City');
+
+include("info.php");
+
+if (isset($_POST['txtMuni']) && !empty($_POST['txtMuni'])) {
+
+$varMuni = "";
+$varLocColonia = "";
+$varCodPost = "";
+$varSecc = "";
+$varLocal = "";
+$varFederal = "";
+$varVisitados = "";
+$varComentarios = "";
+$fechaCap = date("d-m-Y");
+$horaCap = date("g:i:s a");
+$varUsuario = "X";
+$varNavega = $info["browser"];
+$varSitemaO = $info["os"];
+$varGeoRefAct = "";
+$varVersio = $info["version"];
+
 $carpeta = "imagenes_/";
- 
-opendir($carpeta);
-$destino = $carpeta . $_FILES['fotoUno']['name'];
-copy($_FILES['fotoUno']['tmp_name'], $destino);
 
-$destino = $carpeta . $_FILES['fotoDos']['name'];
-copy($_FILES['fotoDos']['tmp_name'], $destino);
- 
-echo "Foto Subida!<br>";
-$nombre = $_FILES['fotoUno']['name'];
-echo "<img src=\"imagenes_/$nombre\"><br>";
-echo $_FILES['fotoUno']['name'] . "<br>";
-echo $_FILES['fotoUno']['type'] . " Extención <br>";
-echo $_FILES['fotoUno']['size'] . " Bytes <br>";
-echo "<a href=upload.html>Regresar....</a>";
-echo "<br><br>";
 
-echo "Foto Subida!<br>";
-$nombre = $_FILES['fotoDos']['name'];
-echo "<img src=\"imagenes_/$nombre\"><br>";
-echo $_FILES['fotoDos']['name'] . "<br>";
-echo $_FILES['fotoDos']['type'] . " Extención <br>";
-echo $_FILES['fotoDos']['size'] . " Bytes <br>";
-echo "<a href=upload.html>Regresar....</a>";
+
+$con = new SQLite3("../data/catMuniColCod.db");
+
+$cs = $con -> query("SELECT * FROM CP_Estado WHERE D_mnpio = '$_POST[txtMuni]' ;");
+	    
+while($resul = $cs->fetchArray()) {
+  $varCodPost =  $resul['d_codigo'];
+}
+
+
+$varMuni = mb_strtoupper($_POST['txtMuni'], 'UTF-8');
+$varLocColonia = mb_strtoupper($_POST['txtLocColonia'], 'UTF-8');
+$varSecc = mb_strtoupper($_POST['txtSecc'], 'UTF-8');
+$varLocal = mb_strtoupper($_POST['txtLocal'], 'UTF-8');
+$varFederal = mb_strtoupper($_POST['txtFederal'], 'UTF-8');
+$varVisitados = mb_strtoupper($_POST['txtVisitados'], 'UTF-8');
+$varComentarios = mb_strtoupper($_POST['txtComentarios'], 'UTF-8');
+
+// Comprobación de fotoUno
+
+if (isset($_FILES['fotoUno']) && !empty($_FILES['fotoUno'])) {
+	
+
+	// aquí sube la fotoUno
+	opendir($carpeta);
+	$nombreArchivo = $varSecc."_".date("dmYgisa")."_".$_FILES['fotoUno']['name'];
+	$destino = $carpeta.$nombreArchivo;
+	copy($_FILES['fotoUno']['tmp_name'], $destino);
+
+	// aquí se crea la variable fotoUno
+	$varfotoUno = $nombreArchivo;
+
+}else{
+	$varfotoUno = "";
+}
+
+// Comprobación de fotoUno
+
+if (isset($_FILES['fotoDos']) && !empty($_FILES['fotoDos'])) {
+
+	// aquí sube la fotoDos
+	opendir($carpeta);
+	$nombreArchivo2 = $varSecc."_".date("dmYgisa")."_2_".$_FILES['fotoDos']['name'];
+	$destino2 = $carpeta.$nombreArchivo2;
+	copy($_FILES['fotoDos']['tmp_name'], $destino2);
+
+	// aquí se crea la variable fotoUno
+	$varfotoDos = $nombreArchivo2;
+}else{
+	$varfotoDos = "";
+}
+
+
+
+$con = new SQLite3("../data/capturas.db");
+
+$cs2 = $con -> query("INSERT INTO capActividades (muniAct,LocColoniaAct,codPostAct,seccAct,localAct,federalAct,visitadosAct,comentariosAct,fotoUnoAct,fotoDosAct,fechaCapAct,horaCapAct,usuarioAct,navegadorAct,sisOperaAct,geoRefAct,versionAct) VALUES ('$varMuni','$varLocColonia','$varCodPost','$varSecc','$varLocal','$varFederal','$varVisitados','$varComentarios','$varfotoUno','$varfotoDos','$fechaCap','$horaCap','$varUsuario','$varNavega','$varSitemaO','$varGeoRefAct','$varVersio')");
+	
+	echo "<script> alert('Datos Insertados!'); </script>";
+	echo "<script> window.location='actividades.php'; </script>";
+
+
+}else{
+	echo "<script> alert('Faltan algunos campos!'); </script>";
+	echo "<script> window.location='actividades.php'; </script>";
+}
+ 
  
  
  ?>
+
+ <!DOCTYPE html>
+ <html lang="es">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<title>Guardar Actividades</title>
+ </head>
+ <body>
+ 	
+ </body>
+ </html>

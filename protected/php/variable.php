@@ -54,7 +54,7 @@ if (isset($catLocal) && !empty($catLocal)) {
 
 								    <label>Local:</label>
 									
-								    <select class="form-control">
+								    <select name="txtLocal" class="form-control">
 								    ';
 
 					$cs2 = $con -> query("SELECT distrito FROM distritosLocales WHERE municipio = '$catLocal' GROUP BY distrito ORDER BY distrito ;");
@@ -63,7 +63,7 @@ if (isset($catLocal) && !empty($catLocal)) {
 								$DisLoc = $resul2['distrito'];
 
 								echo '
-										<option>'.$DisLoc.'</option>
+										<option value="'.$DisLoc.'">'.$DisLoc.'</option>
 								';
 
 							}
@@ -78,7 +78,7 @@ if (isset($catLocal) && !empty($catLocal)) {
 
 								    <label>Federal:</label>
 
-								    <select class="form-control">';
+								    <select name="txtFederal" class="form-control">';
 
 					$cs3 = $con -> query("SELECT distrito FROM distritosFederales WHERE nomMun = '$catLocal' GROUP BY distrito ORDER BY distrito ;");
 							while ($resul3 = $cs3 -> fetchArray()){
@@ -86,7 +86,7 @@ if (isset($catLocal) && !empty($catLocal)) {
 								$DisFed = $resul3['distrito'];
 
 								echo '
-										<option>'.$DisFed.'</option>
+										<option value="'.$DisFed.'">'.$DisFed.'</option>
 								';
 
 							}
