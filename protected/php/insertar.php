@@ -6,6 +6,7 @@ header('Content-Type: text/html; Charset=UTF-8');
 date_default_timezone_set('America/Mexico_City');
 
 include("info.php");
+include("ipUsuario.php");
 
 if (isset($_POST['txtMuni']) && !empty($_POST['txtMuni'])) {
 
@@ -84,7 +85,7 @@ if (isset($_FILES['fotoDos']) && !empty($_FILES['fotoDos'])) {
 
 $con = new SQLite3("../data/capturas.db");
 
-$cs2 = $con -> query("INSERT INTO capActividades (muniAct,LocColoniaAct,codPostAct,seccAct,localAct,federalAct,visitadosAct,comentariosAct,fotoUnoAct,fotoDosAct,fechaCapAct,horaCapAct,usuarioAct,navegadorAct,sisOperaAct,geoRefAct,versionAct) VALUES ('$varMuni','$varLocColonia','$varCodPost','$varSecc','$varLocal','$varFederal','$varVisitados','$varComentarios','$varfotoUno','$varfotoDos','$fechaCap','$horaCap','$varUsuario','$varNavega','$varSitemaO','$varGeoRefAct','$varVersio')");
+$cs2 = $con -> query("INSERT INTO capActividades (muniAct,LocColoniaAct,codPostAct,seccAct,localAct,federalAct,visitadosAct,comentariosAct,fotoUnoAct,fotoDosAct,fechaCapAct,horaCapAct,usuarioAct,navegadorAct,sisOperaAct,ipUsuarioAct,geoRefAct,versionAct) VALUES ('$varMuni','$varLocColonia','$varCodPost','$varSecc','$varLocal','$varFederal','$varVisitados','$varComentarios','$varfotoUno','$varfotoDos','$fechaCap','$horaCap','$varUsuario','$varNavega','$varSitemaO','$ipUsuario','$varGeoRefAct','$varVersio')");
 	
 	echo "<script> alert('Datos Insertados!'); </script>";
 	echo "<script> window.location='actividades.php'; </script>";
