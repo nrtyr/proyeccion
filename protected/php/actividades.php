@@ -1,3 +1,31 @@
+<?php 
+
+error_reporting(E_ALL ^ E_DEPRECATED);
+header("Content-Type: text/html; Charset=UTF-8");
+
+session_start();
+
+if (isset($_SESSION['pwUsuario']) && !empty($_SESSION['pwUsuario'])) {
+	$varCss = "";
+}else{
+
+	session_destroy();
+
+	$varCss = '
+
+	body{
+			display: none;
+		}
+
+
+	';
+	echo "<script> alert('No puedes ver esta Pagina!!'); </script>";
+	echo "<script> window.location='../../index.php'; </script>";
+
+}
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,6 +41,11 @@
 	<script type="text/javascript" src="../../js/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="../../js/fileinput.js"></script>
 	<script type="text/javascript" src="../../js/fileinput_locale_es.js"></script>
+
+	<!-- este es el delay de la pagina -->
+	<?php include("../../inc/displayDelay.inc"); ?>
+	<!-- este es el delay de la pagina -->
+
 
 <!-- 	Ajax de Auto Completado para Colonia -->
 	<script type="text/javascript">
@@ -88,17 +121,22 @@ function geoLocaliza() {
 
 <!-- Todas en mayusculas -->
 	<style>
+
 		input[type=text],[type=number]{
 			text-transform: uppercase;
 		}
 		textarea{
 			text-transform: uppercase;
 		}
+
+		<?php echo $varCss; ?>
+
 	</style>
 <!-- Todas en mayusculas -->
 
 </head>
 <body onload="geoLocaliza()">
+
 	<div class="container">
 	<br>
 		<div class="row">
@@ -214,7 +252,9 @@ function geoLocaliza() {
 					
 				</form>
 
-
+					<a href="destruir.php" ><button class="btn btn-danger btn-lg btn-block">Cerrar sesion <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></button>
+					</a>
+					<br>
 
 
 		  </div>

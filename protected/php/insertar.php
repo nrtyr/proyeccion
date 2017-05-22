@@ -1,6 +1,8 @@
 <?php 
 
 error_reporting(E_ALL ^ E_DEPRECATED);
+session_start();
+
 header('Content-Type: text/html; Charset=UTF-8');
 
 date_default_timezone_set('America/Mexico_City');
@@ -8,7 +10,9 @@ date_default_timezone_set('America/Mexico_City');
 include("info.php");
 include("ipUsuario.php");
 
-if (isset($_POST['txtMuni']) && !empty($_POST['txtMuni'])) {
+
+if (isset($_SESSION['pwUsuario']) && !empty($_SESSION['pwUsuario']) &&
+	isset($_POST['txtMuni']) && !empty($_POST['txtMuni'])) {
 
 $varMuni = "";
 $varLocColonia = "";
@@ -20,7 +24,7 @@ $varVisitados = "";
 $varComentarios = "";
 $fechaCap = date("d-m-Y");
 $horaCap = date("g:i:s a");
-$varUsuario = "X";
+$varUsuario = $_SESSION['usuario'];
 $varNavega = $info["browser"];
 $varSitemaO = $info["os"];
 $varGeoRefAct = "";
