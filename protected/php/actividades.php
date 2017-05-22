@@ -210,7 +210,7 @@ function geoLocaliza() {
 
 					    <label>No. de Asistentes o Visitados:</label>
 
-					    <input type="text" name="txtVisitados" size="2" maxlength="2" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="Asistentes..." id="autoSeccion" autocomplete="on" class="form-control" required/>
+					    <input type="text" name="txtVisitados" size="2" maxlength="2" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="Asistentes..." autocomplete="on" class="form-control" required/>
 					</div>
 
 					<div class="form-group">

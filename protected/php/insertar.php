@@ -100,6 +100,8 @@ if (isset($_FILES['fotoDos']) && !empty($_FILES['fotoDos'])) {
 $con = new SQLite3("../data/capturas.db");
 
 $cs2 = $con -> query("INSERT INTO capActividades (muniAct,LocColoniaAct,codPostAct,seccAct,localAct,federalAct,visitadosAct,comentariosAct,fotoUnoAct,fotoDosAct,fechaCapAct,horaCapAct,usuarioAct,navegadorAct,sisOperaAct,ipUsuarioAct,geoRefLatitudAct,geoRefLongitudAct,versionAct) VALUES ('$varMuni','$varLocColonia','$varCodPost','$varSecc','$varLocal','$varFederal','$varVisitados','$varComentarios','$varfotoUno','$varfotoDos','$fechaCap','$horaCap','$varUsuario','$varNavega','$varSitemaO','$ipUsuario','$geoLatitud','$geoLongitud','$varVersio')");
+
+$con -> close();
 	
 	echo "<script> alert('Datos Insertados!'); </script>";
 	// echo "<script> window.location='actividades.php'; </script>";
