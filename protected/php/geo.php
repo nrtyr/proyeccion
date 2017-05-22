@@ -1,9 +1,15 @@
 <?php 
 
-define('MAPS_HOST', 'maps.google.com');
+session_start();
+$latitud = $_GET['q'];
+$longitud = $_GET['q2'];
 
+echo '<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>'."  ".$latitud.",".$longitud;
+echo '
 
-$base_url = "http://".MAPS_HOST."/maps/geo?output=csv&key=".KEY;
-
+<input type="hidden" name="txtLatitud" value="'.$latitud.'">
+<br>
+<input type="hidden" name="txtLongitud" value="'.$longitud.'">
+';
 
  ?>

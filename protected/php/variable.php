@@ -5,6 +5,8 @@ $min = "";
 $mini = $_POST['autoMunicipio'];
 $_SESSION['mini'] = $_POST['autoMunicipio'];
 
+
+
 $catLocal = $_POST['autoMunicipio'];
 
 

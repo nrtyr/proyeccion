@@ -43,6 +43,49 @@
 <!-- 	Ajax de Auto Completado para Colonia -->
 
 
+<!-- Ajax para Geolocalización -->
+	<script>
+		
+function geoLocaliza() {
+  var output = document.getElementById("geoPosLatLong");
+
+  if (!navigator.geolocation){
+    output.innerHTML = "<p>Tu navegador no soporta la Geo Localización!</p>";
+    return;
+  }
+
+  function success(position) {
+	    var latitude  = position.coords.latitude;
+	    var longitude = position.coords.longitude;
+	    var geoPos;
+
+	      if (window.XMLHttpRequest) {
+	        geoPos = new XMLHttpRequest();
+	      }else{
+	        geoPos = new ActiveXObject("Microsoft.XMLHTTP");
+	      }
+	      geoPos.onreadystatechange=function(){
+	        if (geoPos.readyState==4 && geoPos.status==200) {
+	          document.getElementById("geoPosLatLong").innerHTML=geoPos.responseText;
+	        }
+	      }
+	      geoPos.open("GET", "geo.php?q="+latitude+"&q2="+longitude,true);
+	      geoPos.send();
+	  };
+
+	  function error() {
+	    output.innerHTML = "<span class='glyphicon glyphicon-map-marker' aria-hidden='true'></span> No se puede encontrar tu ubicación!";
+	  };
+
+	  output.innerHTML = "<p><span class='glyphicon glyphicon-map-marker' aria-hidden='true'></span> Localizando..</p>";
+
+	  navigator.geolocation.getCurrentPosition(success, error);
+	}
+
+		  
+	</script>
+<!-- Ajax para Geolocalización -->
+
 <!-- Todas en mayusculas -->
 	<style>
 		input[type=text],[type=number]{
@@ -55,17 +98,28 @@
 <!-- Todas en mayusculas -->
 
 </head>
-<body>
+<body onload="geoLocaliza()">
 	<div class="container">
 	<br>
 		<div class="row">
 		  <div class="col-md-6 col-md-offset-3 panel panel-success">
-		  	<h1>Reporte Diario de Actividades</h1>
+			
+		  	<div class="ok"><h1>Reporte Diario de Actividades</h1></div>
 		  	<br>
+		  	
 
 
 				<form action="insertar.php" method="post" enctype="multipart/form-data">
 					<div class="form-group">
+						<h2>
+							<small>
+
+								<div id="geoPosLatLong">
+									<span class='glyphicon glyphicon-map-marker' aria-hidden='true'></span>
+								</div>
+							</small>
+						</h2>
+						<br>
 
 					    <label>Municipio:</label>
 
@@ -77,7 +131,7 @@
 					    <label>Localidad / Colonia:</label>
 
 						
-					    	<input type="text" name="txtLocColonia" placeholder="Localidad / Colonia..." id="autoLocColonia" autocomplete="on" class="form-control" />
+					    	<input type="text" name="txtLocColonia" placeholder="Localidad / Colonia..." id="autoLocColonia" autocomplete="on" class="form-control" required/>
 					    
 					</div>
 
@@ -85,7 +139,7 @@
 
 					    <label>Sección:</label>
 
-					    <input type="text" name="txtSecc" size="4" maxlength="4" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="Sección..." id="autoSeccion" autocomplete="on" class="form-control" />
+					    <input type="text" name="txtSecc" size="4" maxlength="4" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="Sección..." id="autoSeccion" autocomplete="on" class="form-control" required/>
 					</div>
 					
 					<div class="panel panel-default">
@@ -118,7 +172,7 @@
 
 					    <label>No. de Asistentes o Visitados:</label>
 
-					    <input type="text" name="txtVisitados" size="2" maxlength="2" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="No. de Asistentes o Visitados..." autocomplete="on" class="form-control"/>
+					    <input type="text" name="txtVisitados" size="2" maxlength="2" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="Asistentes..." id="autoSeccion" autocomplete="on" class="form-control" required/>
 					</div>
 
 					<div class="form-group">
@@ -154,6 +208,8 @@
 
 					    <input type="submit" value="Guardar" class="btn btn-success btn-lg btn-block"/>
 					</div>
+
+					
 
 					
 				</form>
