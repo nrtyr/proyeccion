@@ -128,6 +128,14 @@ function geoLocaliza() {
 		textarea{
 			text-transform: uppercase;
 		}
+		.resBtn{
+			background-color: #562CDF;
+			color: #FFF;
+		}
+		.resBtn:hover{
+			background-color: #3B008B;
+			color: #FFF;
+		}
 
 		<?php echo $varCss; ?>
 
@@ -247,6 +255,10 @@ function geoLocaliza() {
 					    <input type="submit" value="Guardar" class="btn btn-success btn-lg btn-block"/>
 					</div>
 
+					<div class="form-group">
+
+					    <input type="reset" value="Limpiar" class="btn btn btn-lg btn-block resBtn"/>
+					</div>
 					
 
 					

@@ -46,7 +46,7 @@ $carpeta = "imagenes_/";
 
 $con = new SQLite3("../data/catMuniColCod.db");
 
-$cs = $con -> query("SELECT * FROM CP_Estado WHERE D_mnpio = '$_POST[txtMuni]' ;");
+$cs = $con -> query("SELECT * FROM CP_Estado WHERE D_mnpio = '$_POST[txtMuni]' AND d_asenta = '$_POST[txtLocColonia]' ;");
 	    
 while($resul = $cs->fetchArray()) {
   $varCodPost =  $resul['d_codigo'];
