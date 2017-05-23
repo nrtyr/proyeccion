@@ -104,7 +104,7 @@ $cs2 = $con -> query("INSERT INTO capActividades (muniAct,LocColoniaAct,codPostA
 $con -> close();
 	
 	echo "<script> alert('Datos Insertados!'); </script>";
-	// echo "<script> window.location='actividades.php'; </script>";
+	echo "<script> window.location='actividades.php'; </script>";
 
 
 }else{

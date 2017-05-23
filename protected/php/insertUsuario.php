@@ -28,7 +28,7 @@ if (isset($_POST['txtNombre']) && !empty($_POST['txtNombre']) &&
 		$con -> close();
 
 		echo "<script> alert('Error Usuario Registrado!');</script>";
-		echo "<script> window.location='regUsuario.php';</script>";
+		echo "<script> window.location='regUsuarios.php';</script>";
 
 	}else{
 
